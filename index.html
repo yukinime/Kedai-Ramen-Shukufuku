@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedai Ramen Shukufuku</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff5f5;
+        }
+        .navbar {
+            background-color: #b22222;
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: #ffe4e4 !important;
+        }
+
+        /* Carousel images */
+        .hero-carousel img {
+            max-height: 600px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        /* Overlay untuk Carousel */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Menggunakan overlay yang lebih gelap */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 2px 2px 5px black;
+            text-align: center;
+            z-index: 2;
+            padding: 0 15px;
+        }
+
+        /* Ukuran font untuk Hero Section */
+        .hero-overlay h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hero-overlay p {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-overlay h1 {
+                font-size: 2rem;
+            }
+            .hero-overlay p {
+                font-size: 1rem;
+            }
+            .hero-overlay {
+                margin-top: 4rem;
+            }
+        }
+
+        /* Section Tentang Kami dan Spasi */
+        .section-title {
+            color: #b22222;
+            font-weight: bold;
+        }
+
+        #menu {
+            background-color: #ffe4e4;
+        }
+        #menu h4 {
+            color: #b22222;
+        }
+        #menu p {
+            color: #333;
+        }
+        #menu .card-img-top {
+            object-fit: cover;
+            height: 200px;
+        }
+
+        #lokasi iframe {
+            border: 2px solid #b22222;
+            width: 100%;
+            height: 400px;
+        }
+
+        #pesan .btn {
+            background-color: #b22222;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+        }
+
+        #pesan .btn:hover {
+            background-color: #800000;
+        }
+
+        footer {
+            background-color: #b22222;
+            color: white;
+        }
+
+        /* Menambahkan margin antara hero section dan section lainnya */
+        .section-spacing {
+            margin-top: 50px;
+        }
+        /* Carousel images untuk Menu */
+.menu-img {
+    object-fit: cover;  /* Menjaga gambar agar tidak terdistorsi dan tetap proporsional */
+    height: 400px;  /* Tentukan tinggi yang konsisten untuk gambar */
+}
+
+/* Menyembunyikan menu carousel pada perangkat desktop */
+#menuCarousel {
+    display: none; /* Defaultnya disembunyikan di desktop */
+}
+
+/* Menyembunyikan menu statis pada perangkat mobile */
+.d-none.d-md-block {
+    display: none;  /* Menyembunyikan menu statis pada perangkat mobile */
+}
+
+/* Mengatur tampilan carousel hanya untuk layar mobile */
+@media (max-width: 768px) {
+    #menuCarousel {
+        display: block; /* Menampilkan carousel di mobile */
+    }
+
+    /* Menyesuaikan ukuran gambar carousel di perangkat kecil */
+    .menu-img {
+        height: 300px; /* Ukuran gambar lebih kecil di perangkat mobile */
+    }
+}
+
+/* Menampilkan menu statis di perangkat desktop */
+@media (min-width: 768px) {
+    .d-none.d-md-block {
+        display: block;  /* Menampilkan menu statis pada perangkat desktop */
+    }
+
+    /* Menyembunyikan carousel pada perangkat desktop */
+    #menuCarousel {
+        display: none; /* Menyembunyikan carousel di desktop */
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Shukufuku Ramen</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#tentang">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#menu">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#lokasi">Lokasi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#pesan">Pesan</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="position-relative">
+    <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/img/corousel1.jpeg" class="d-block w-100" alt="Ramen 1">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/corousel2.jpeg" class="d-block w-100" alt="Ramen 2">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="hero-overlay">
+        <h1>Selamat Datang di Kedai Ramen Shukufuku</h1>
+        <p>Rasakan Kelezatan Ramen Jepang Terbaik</p>
+        <a href="#menu" class="btn btn-light btn-lg">Lihat Menu</a>
+    </div>
+</header>
+
+<!-- Tentang Kami -->
+<section id="tentang" class="py-5 section-spacing">
+    <div class="container text-center">
+        <h2 class="section-title">Tentang Kami</h2>
+        <p>Selamat datang di Kedai Ramen Shukufuku, rumah bagi ramen terbaik di Kota Karawang! Sejak berdiri pada tahun 2014, kami telah menjadi destinasi favorit para pencinta ramen yang menginginkan cita rasa autentik Jepang dengan sentuhan lokal yang istimewa.
+
+            Di Shukufuku, kami percaya bahwa setiap mangkuk ramen adalah karya seni. Kami menggunakan bahan-bahan berkualitas tinggi, mulai dari mie kenyal buatan sendiri, kaldu yang dimasak perlahan hingga puluhan jam, hingga topping segar yang menggugah selera. Setiap hidangan diracik dengan penuh cinta dan perhatian untuk memberikan pengalaman makan yang tak terlupakan.
+            
+            Menu kami menghadirkan beragam pilihan rasa, dari kuah pedas yang berani hingga kuah kari kaya rempah, semua disajikan dengan sentuhan khas Kedai Ramen Shukufuku. Dengan suasana kedai yang nyaman dan pelayanan ramah, kami ingin menciptakan tempat di mana setiap pengunjung merasa seperti di rumah sendiri.
+            
+            Terima kasih telah menjadi bagian dari perjalanan kami sejak 2014. Kami akan terus berinovasi dan memberikan yang terbaik agar Shukufuku menjadi tempat yang selalu Anda rindukan. Selamat menikmati kelezatan ramen kami!
+            
+            Salam hangat,
+            Kedai Ramen Shukufuku</p>
+    </div>
+</section>
+
+<!-- Menu -->
+<!-- Menu -->
+<section id="menu" class="py-5">
+    <div class="container text-center">
+        <h2 class="section-title">Menu Kami</h2>
+
+        <!-- Carousel Menu (tampil di mobile) -->
+        <div id="menuCarousel" class="carousel slide d-md-none" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card">
+                        <img src="/img/1.jpeg" class="d-block w-100 menu-img" alt="Shoyu Ramen">
+                        <div class="card-body">
+                            <h4 class="card-title">Shoyu Ramen</h4>
+                            <p class="card-text">Kuah kedelai tradisional yang lezat. <strong>Rp50.000</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card">
+                        <img src="/img/2.jpeg" class="d-block w-100 menu-img" alt="Tonkotsu Ramen">
+                        <div class="card-body">
+                            <h4 class="card-title">Tonkotsu Ramen</h4>
+                            <p class="card-text">Kuah babi kaya rasa dengan daging empuk. <strong>Rp60.000</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card">
+                        <img src="/img/3.jpeg" class="d-block w-100 menu-img" alt="Veggie Ramen">
+                        <div class="card-body">
+                            <h4 class="card-title">Veggie Ramen</h4>
+                            <p class="card-text">Ramen sehat dengan sayuran segar. <strong>Rp45.000</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Controls untuk Carousel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#menuCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#menuCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Menu Statis (tampil di desktop) -->
+        <div class="d-none d-md-block">
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="/img/1.jpeg" class="card-img-top" alt="Shoyu Ramen">
+                        <div class="card-body">
+                            <h4 class="card-title">Teriyaki ramen</h4>
+                            <p class="card-text">Ramen dengan kuah teriyaki manis gurih, disajikan dengan ayam panggang teriyaki, telur rebus, dan daun bawang. <strong>Rp28.000</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="/img/2.jpeg" class="card-img-top" alt="Tonkotsu Ramen">
+                        <div class="card-body">
+                            <h4 class="card-title">Orijinaru ramen</h4>
+                            <p class="card-text">Ramen klasik dengan kuah nikmat, mie kenyal, jagung manis, serutan wortel segar, dan taburan daun bawang untuk cita rasa autentik.<strong>Rp18.000</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="/img/3.jpeg" class="card-img-top" alt="Veggie Ramen">
+                        <div class="card-body">
+                            <h4 class="card-title">Ebi furai ramen</h4>
+                            <p class="card-text">Ramen kuah gurih dengan udang goreng tepung renyah, mie kenyal, telur rebus, dan sayuran segar. <strong>Rp28.000</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="/img/4.jpeg" class="card-img-top" alt="Veggie Ramen">
+                        <div class="card-body">
+                            <h4 class="card-title">Chicken katsu ramen</h4>
+                            <p class="card-text">Ramen dengan kuah gurih khas, disajikan dengan potongan ayam katsu renyah, telur rebus, daun bawang, dan taburan wijen.. <strong>Rp25.000</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="/img/5.jpeg" class="card-img-top" alt="Veggie Ramen">
+                        <div class="card-body">
+                            <h4 class="card-title">Kari ramen</h4>
+                            <p class="card-text">Ramen klasik dengan kuah kaldu autentik, telur rebus, tahu lembut, wortel serut, dan daun bawang. <strong>Rp22.000</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="/img/6.jpeg" class="card-img-top" alt="Veggie Ramen">
+                        <div class="card-body">
+                            <h4 class="card-title">Mitoboru ramen</h4>
+                            <p class="card-text">Ramen kuah gurih dengan bola daging sapi, jagung manis, telur rebus, tahu lembut, dan wortel serut, dihiasi wijen. <strong>Rp20.000</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lokasi -->
+<section id="lokasi" class="py-5 section-spacing">
+    <div class="container text-center">
+        <h2 class="section-title">Lokasi Kami</h2>
+        <p>Kunjungi kedai kami di alamat berikut untuk menikmati ramen terbaik!</p>
+        <!-- Google Maps -->
+        <div id="lokasi">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.0942958618307!2d107.3694933!3d-6.3818291999999985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6974133cd7aae3%3A0x4fe9fc6365dba0da!2sKedai%20Ramen%20Walahar!5e0!3m2!1sen!2ssg!4v1732835338243!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- Pesan -->
+<section id="pesan" class="py-5 section-spacing text-center">
+    <div class="container">
+        <h2 class="section-title">Pesan Ramen Anda</h2>
+        <p>Untuk pemesanan langsung, klik tombol di bawah ini dan kirimkan pesanan Anda melalui WhatsApp.</p>
+        <a href="https://wa.me/6289515720172?text=Halo%20saya%20ingin%20memesan%20ramen!" class="btn btn-lg">Pesan Sekarang</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-3 text-center">
+    <div class="container">
+        <p>&copy; 2024 Kedai Ramen Shukufuku. Semua Hak Dilindungi.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
